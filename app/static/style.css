@@ -1,0 +1,73 @@
+body {
+  background-color: #282c34;
+  color: #abb2bf;
+  font-family: "Arial", sans-serif;
+}
+
+.header {
+    display: inline-block;
+}
+
+.star-icon {
+  width: 77.5px;
+  height: 15px;
+}
+
+
+.logo {
+    max-width: 75px;
+    height: auto;
+    margin-right: 10px;
+    vertical-align: middle;
+    background-color: transparent;
+}
+
+h1 {
+    display: inline-block;
+    vertical-align: middle;
+    color: #c678dd;
+}
+
+h2, h3, h4, h5, h6 {
+  color: #c678dd;
+}
+
+a {
+  color: #61afef;
+}
+
+.book-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.book-list li {
+  margin-bottom: 20px;
+  background-color: #3e4451;
+  padding: 10px;
+}
+
+.book-info {
+  margin-left: 20px;
+}
+
+.book-info h3 {
+  color: #e5c07b;
+}
+
+.book-info p {
+  color: #abb2bf;
+}
+
+.button {
+  background-color: #444;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #666;
+}

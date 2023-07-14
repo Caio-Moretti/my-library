@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Library</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="header">
+    <img src="{{ url_for('static', filename='img/book_logo.png') }}" alt="Logo" class="logo">
+    <h1>My Library</h1>
+</div>
+
+<h2>Add book</h2>
+<form action="/library" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="action" value="add">
+    <label for="author">Author:</label>
+    <input type="text" id="author" name="author" required>
+
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="rating">Rating (1-5):</label>
+    <input type="number" id="rating" name="rating" min="1" max="5" required>
+
+    <button type="submit">Add</button>
+</form>
+
+
+<h2>Your books</h2>
+<ul class="book-list">
+    {% for book in books %}
+    <li>
+        <div class="book-info">
+            <h3>{{ book.title }}</h3>
+            <p>{{ book.author }}</p>
+            <img src="{{ url_for('static', filename=book.star_icon) }}" alt="Rating" class="star-icon">
+            <form action="/library" method="post" class="delete-form">
+                <input type="hidden" name="action" value="delete">
+                <input type="hidden" name="title" value="{{ book.title }}">
+                <button type="submit" class="delete-button">Delete</button>
+            </form>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
