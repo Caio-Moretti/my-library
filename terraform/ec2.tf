@@ -23,8 +23,8 @@ resource "aws_instance" "my-library-ec2" {
       "sudo usermod -aG docker ubuntu",
       "sudo systemctl start docker",
       "sudo systemctl enable docker",
-      "aws configure set aws_access_key_id AKIAQIUHP3EKHP2LNKKF",
-      "aws configure set aws_secret_access_key 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",
+      "aws configure set aws_access_key_id {access_key}",
+      "aws configure set aws_secret_access_key {secret_key}",
       "aws ecr get-login-password --region ${var.aws_region} | sudo docker login --username AWS --password-stdin ${var.account_id}.dkr.ecr.us-west-2.amazonaws.com",
       "sudo docker pull ${var.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/my-library-ecr:latest",
       "sudo docker run -d -p 5000:5000 docker run -p 5000:5000 -d ${var.account_id}.dkr.ecr.us-west-2.amazonaws.com/my-library-ecr:latest"
