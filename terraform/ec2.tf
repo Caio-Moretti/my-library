@@ -9,8 +9,7 @@ resource "aws_instance" "my-library-ec2" {
   key_name                    = aws_key_pair.ec2_key.key_name
   subnet_id                   = aws_subnet.my-library-subnet.id
   associate_public_ip_address = true
-
-  vpc_security_group_ids = [aws_security_group.enable-ssh-sg.id]
+  vpc_security_group_ids      = [aws_security_group.enable-ssh-sg.id]
 
   tags = {
     Name = "ec2-my-library-terraform"
@@ -22,6 +21,7 @@ resource "aws_instance" "my-library-ec2" {
       user        = "ubuntu"
       private_key = file("~/.ssh/id_rsa")
       host        = self.public_ip
+      timeout = "3m"
     }
 
     inline = [
