@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  RF_VAR_docker_password: ${{ secrets.DOCKER_PASSWORD }}
+  TF_VAR_docker_password: ${{ secrets.DOCKER_PASSWORD }}
 
 jobs:
   terraform:
