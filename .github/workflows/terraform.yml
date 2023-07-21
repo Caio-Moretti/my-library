@@ -27,6 +27,28 @@ jobs:
           echo "aws_access_key_id=${{ secrets.AWS_ACCESS_KEY }}" >> ~/.aws/credentials
           echo "aws_secret_access_key=${{ secrets.AWS_SECRET_KEY }}" >> ~/.aws/credentials
 
+
+      - name: Create SSH Directory
+        run: mkdir -p ~/.ssh
+  
+      - name: Check if SSH Key Exists
+        id: check_ssh_key
+        run: |
+          if [ -f ~/.ssh/ssh-key ]; then
+            echo "SSH key already exists"
+            exit 1
+          else
+            echo "SSH key does not exist"
+            exit 0
+          fi
+        continue-on-error: true
+      
+      - name: Generate SSH Key
+        if: steps.check_ssh_key.outcome == 'success'
+        run: |
+          ssh-keygen -t rsa -f ~/.ssh/ssh-key
+          chmod 600 ~/.ssh/ssh-key
+
       - name: Initialize Terraform
         run: terraform init
 
