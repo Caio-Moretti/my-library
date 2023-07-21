@@ -1,6 +1,6 @@
 resource "aws_key_pair" "ec2_key" {
   key_name   = "ec2_key"
-  public_key = file("~/.ssh/id_rsa.pub")
+  public_key = file("~/.ssh/ssh-key.pub")
 }
 
 resource "aws_instance" "my-library-ec2" {
@@ -20,7 +20,7 @@ resource "aws_instance" "my-library-ec2" {
     connection {
       type        = "ssh"
       user        = "ubuntu"
-      private_key = file("~/.ssh/id_rsa")
+      private_key = file("~/.ssh/ssh-key")
       host        = self.public_ip
       timeout     = "3m"
     }

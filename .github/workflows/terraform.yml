@@ -23,20 +23,24 @@ jobs:
           echo "aws_access_key_id=${{ secrets.AWS_ACCESS_KEY }}" >> ~/.aws/credentials
           echo "aws_secret_access_key=${{ secrets.AWS_SECRET_KEY }}" >> ~/.aws/credentials
 
-      - name: Initialize Terraform
+      - name: Create SSH Directory
+        run: mkdir -p ~/.ssh
+  
+      - name: Generate SSH Key
         run: |
-          terraform init
+          ssh-keygen -t rsa -f ~/.ssh/ssh-key
+          chmod 600 ~/.ssh/ssh-key
+  
+      - name: Initialize Terraform
+        run: terraform init
 
       - name: Terraform Validate
-        run: |
-          terraform validate
+        run: terraform validate
 
       - name: Terraform Plan
         id: plan
-        run: |
-          terraform plan -out=tfplan
+        run: terraform plan -out=tfplan
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: |
-          terraform apply -auto-approve tfplan
+        run: terraform apply -auto-approve tfplan
