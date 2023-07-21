@@ -21,6 +21,14 @@ resource "aws_security_group" "enable-ssh-sg" {
     description = "Enable  SSh"
   }
 
+  ingress {
+    from_port   = 5000
+    to_port     = 5000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+    description = "Allow access to port 5000"
+  }
+
 
   # Outboud Rule for SG
   egress {
