@@ -26,9 +26,7 @@ jobs:
           echo "[default]" > ~/.aws/credentials
           echo "aws_access_key_id=${{ secrets.AWS_ACCESS_KEY }}" >> ~/.aws/credentials
           echo "aws_secret_access_key=${{ secrets.AWS_SECRET_KEY }}" >> ~/.aws/credentials
-                   
-      - name: Destroy Terraform
-        run: terraform destroy --auto-approve
+
 
       - name: Create SSH Directory
         run: mkdir -p ~/.ssh
@@ -53,6 +51,9 @@ jobs:
 
       - name: Initialize Terraform
         run: terraform init
+        
+      - name: Destroy Terraform
+        run: terraform destroy --auto-approve
 
       - name: Terraform Validate
         run: terraform validate
