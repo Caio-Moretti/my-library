@@ -7,3 +7,8 @@ variable "account_id" {
   description = "Account id"
   default     = "018537765140"
 }
+
+variable "docker_password" {
+  type = string
+  description = "Docker password for login"
+}
