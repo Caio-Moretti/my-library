@@ -14,9 +14,10 @@ jobs:
 
       - name: Configure AWS CLI
         run: |
-          echo "[default]" >> $HOME/.aws/credentials
-          echo "aws_access_key_id=${{ secrets.AWS_ACCESS_KEY }}" >> $HOME/.aws/credentials
-          echo "aws_secret_access_key=${{ secrets.AWS_SECRET_KEY }}" >> $HOME/.aws/credentials
+          mkdir -p ~/.aws
+          echo "[default]" > ~/.aws/credentials
+          echo "aws_access_key_id=${{ secrets.AWS_ACCESS_KEY }}" >> ~/.aws/credentials
+          echo "aws_secret_access_key=${{ secrets.AWS_SECRET_KEY }}" >> ~/.aws/credentials
 
       - name: Install Terraform
         run: |
