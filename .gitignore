@@ -33,3 +33,6 @@ override.tf.json
 .terraformrc
 terraform.rc
 terraform/plan_out
+.idea/vcs.xml
+.terraform.lock.hcl
+keys.txt
