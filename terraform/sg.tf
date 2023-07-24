@@ -1,6 +1,6 @@
 resource "aws_security_group" "enable-ssh-sg" {
   name_prefix = "enable-ssh-sg-"
-  description = "SecurityGroup for EC2 with SSH access"
+  description = "Security Group for EC2 with SSH access"
 
   vpc_id = aws_vpc.my-library-vpc.id
 
