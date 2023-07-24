@@ -13,7 +13,7 @@ resource "aws_instance" "my-library-ec2" {
   monitoring                  = true
 
   tags = {
-    Name = "ec2-my-library-terraform"
+    Name = "My Library EC2 Instance from Terraform"
   }
 
   provisioner "remote-exec" {
