@@ -17,8 +17,3 @@ variable "private_key" {
   type = string
   description = "SSH Private key"
 }
-
-variable "ssh_public_key" {
-  type = string
-  description = "SSH Public key"
-}

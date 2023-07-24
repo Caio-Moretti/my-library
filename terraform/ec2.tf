@@ -1,12 +1,7 @@
-resource "aws_key_pair" "ec2_key" {
-  key_name   = "ec2_key"
-  public_key = var.ssh_public_key
-}
-
 resource "aws_instance" "my-library-ec2" {
   ami                         = "ami-03f65b8614a860c29"
   instance_type               = "t2.micro"
-  key_name                    = aws_key_pair.ec2_key.key_name
+  key_name                    = "ec2-public-key"
   subnet_id                   = aws_subnet.my-library-subnet.id
   associate_public_ip_address = true
   vpc_security_group_ids      = [aws_security_group.enable-ssh-sg.id]
