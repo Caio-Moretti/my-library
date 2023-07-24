@@ -32,7 +32,7 @@ resource "aws_instance" "my-library-ec2" {
       "sudo usermod -aG docker ubuntu && sudo chmod 666 /var/run/docker.sock",
       "sudo systemctl restart docker",
       "sudo systemctl enable docker",
-      # "echo ${var.docker_password} | docker login --username meu_usuario --password-stdin",
+      "echo ${var.docker_password} | docker login --username meu_usuario --password-stdin",
       "docker pull caiomoretti/my-library-image:latest",
       "docker images",
       "docker run -d -p 5000:5000 caiomoretti/my-library-image:latest"
