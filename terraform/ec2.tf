@@ -8,7 +8,7 @@ resource "aws_instance" "my-library-ec2" {
   monitoring                  = true
 
   tags = {
-    Name = "My-Library EC2 Instance from Terraform (after unlock)"
+    Name = "My Library EC2 Instance from Terraform (after unlock)"
   }
 
   provisioner "remote-exec" {
