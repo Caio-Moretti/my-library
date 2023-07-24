@@ -1,4 +1,4 @@
-name: Apply terraform resources
+name: Terraform apply
 
 on:
   push:
