@@ -42,11 +42,11 @@ jobs:
 
       - name: Terraform Validate
         id: validate
-        run: terraform validate -no-color
+        run: terraform validate 
 
       - name: Terraform Plan
         id: plan
-        run: terraform plan -lock=false -no-color
+        run: terraform plan -lock=false 
         continue-on-error: true
 
       - uses: actions/github-script@v6
