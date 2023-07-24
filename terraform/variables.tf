@@ -12,3 +12,13 @@ variable "docker_password" {
   type = string
   description = "Docker password for login"
 }
+
+variable "private_key" {
+  type = string
+  destription = "SSH Private key"
+}
+
+variable "ssh_public_key" {
+  type = string
+  description = "SSH Public key"
+}
