@@ -9,8 +9,8 @@ env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
   TF_VAR_docker_password: ${{ secrets.DOCKER_PASSWORD }}
-#  TF_VAR_private_key: ${{ secrets.PRIVATE_KEY }}
-#  TF_VAR_public_key: ${{ vars.SSH_PUBLIC_KEY }}
+  TF_VAR_private_key: ${{ secrets.PRIVATE_KEY }}
+  TF_VAR_public_key: ${{ vars.SSH_PUBLIC_KEY }}
 
 jobs:
   terraform-plan:
