@@ -1,12 +1,12 @@
 name: Apply terraform resources
 
 on:
-  push:
-    branches:
-      - main
-      - master
-    paths:
-      - 'terraform/**'
+    push:
+      branches:
+        - main
+    pull_request:
+      paths:
+        - 'terraform'
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
