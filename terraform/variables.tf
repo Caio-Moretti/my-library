@@ -15,7 +15,7 @@ variable "docker_password" {
 
 variable "private_key" {
   type = string
-  destription = "SSH Private key"
+  description = "SSH Private key"
 }
 
 variable "ssh_public_key" {
