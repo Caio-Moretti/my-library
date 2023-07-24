@@ -48,6 +48,9 @@ jobs:
       - name: Terraform Validate
         id: validate
         run: terraform validate -no-color
+      
+      - name: Terraform remove Backend
+        run: terraform state rm aws_s3_bucket.terraform_state aws_s3_bucket_server_side_encryption_configuration.example aws_s3_bucket_versioning.versioning_example
 
       - name: Terraform Destroy
         run: terraform destroy -auto-approve
