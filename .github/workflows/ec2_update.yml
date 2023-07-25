@@ -1,0 +1,99 @@
+name: Terraform apply
+
+on:
+  workflow_call:
+  
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
+  TF_VAR_docker_password: ${{ secrets.DOCKER_PASSWORD }}
+  TF_VAR_private_key: ${{ secrets.PRIVATE_KEY }}
+  TF_VAR_public_key: ${{ vars.SSH_PUBLIC_KEY }}
+  TF_WORKING_DIR: 'terraform'
+  
+defaults:
+  run:
+    shell: bash
+    working-directory: ${{ env.TF_WORKING_DIR }}
+    
+jobs:
+  ec2-destroy:
+    name: EC2 destroy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+      
+      - name: Terraform fmt
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true
+
+      - name: Terraform Init
+        id: init
+        run: terraform init -backend=true
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+
+      - name: Terraform Destroy
+        run: terraform destroy -target aws_instance.my-library-ec2 -auto-approve
+        
+  terraform-plan:
+    needs: ec2-destroy
+    name: Terraform plan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+      
+      - name: Terraform fmt
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true
+
+      - name: Terraform Init
+        id: init
+        run: terraform init -backend=true
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+        
+      - name: Terraform plan
+        run: terraform plan -lock=false
+        continue-on-error: true
+    
+  terraform-apply:
+    needs: terraform-plan
+    name: Restart EC2 Instance
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+      
+      - name: Terraform fmt
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true
+
+      - name: Terraform Init
+        id: init
+        run: terraform init -backend=true
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+        
+      - name: Terraform apply
+        run: terraform apply -lock=false -auto-approve
