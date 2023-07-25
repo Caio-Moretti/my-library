@@ -20,7 +20,7 @@ jobs:
     name: 'Docker image update and push'
     runs-on: ubuntu-latest
     env:
-      DOCKER_WORKING_DIR: './'
+      DOCKER_WORKING_DIR: .
 
     defaults:
       run:
