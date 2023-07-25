@@ -1,0 +1,30 @@
+name: Docker image push
+
+on:
+  push:
+    paths:
+      - 'app/**'
+
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
+  TF_VAR_docker_password: ${{ secrets.DOCKER_PASSWORD }}
+  TF_VAR_private_key: ${{ secrets.PRIVATE_KEY }}
+
+jobs:
+  docker-push:
+    name: 'Docker image update and push'
+    runs-on: ubuntu-latest
+    env:
+      DOCKER_WORKING_DIR: './'
+
+    defaults:
+      run:
+        shell: bash
+        working-directory: ${{ env.DOCKER_WORKING_DIR }}
+
+    permissions:
+      pull-request: write
+
+    steps:
+      - uses: actions/checkout@v3
