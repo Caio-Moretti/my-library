@@ -1,0 +1,5 @@
+name: Terraform apply
+
+on:
+  workflow_call:
+

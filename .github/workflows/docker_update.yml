@@ -44,3 +44,8 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: caiomoretti/my-library-image
+  
+  ec2-update:
+    needs: docker-update
+    uses: ./.github/workflows/ec2-update.yml
+    secrets: inherit
