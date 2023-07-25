@@ -47,5 +47,5 @@ jobs:
   
   ec2-update:
     needs: docker-update
-    uses: ./.github/workflows/ec2-update.yml
+    uses: ./.github/workflows/ec2_update.yml
     secrets: inherit
