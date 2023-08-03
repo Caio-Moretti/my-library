@@ -8,6 +8,11 @@ variable "account_id" {
   default     = "018537765140"
 }
 
+variable "docker_username" {
+  type = string
+  description = "Docker username for login"
+}
+
 variable "docker_password" {
   type = string
   description = "Docker password for login"
