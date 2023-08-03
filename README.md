@@ -1,3 +1,4 @@
+![banner](/img/Banner.png)
 # My Library (Práticas DevOps)
 
 This project showcases a basic library website deployed on AWS using IaC, Docker, CI/CD and monitoring.
@@ -196,3 +197,7 @@ Before submitting a pull request, please ensure that your code follows the proje
 - Make website frontend better.
 - Add a Log In system.
 - Add database service such as RDS or DynamoDB
+
+---
+
+![ending](/img/Ending.png)
