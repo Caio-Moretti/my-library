@@ -8,7 +8,7 @@ books = []
 # Rota principal
 @app.route('/')
 def home():
-    return "Bem vindo ao meu aplicativo Flask!!"
+    return "Bem vindo ao meu aplicativo Flask!"
 
 
 @app.route('/library', methods=['GET', 'POST'])
