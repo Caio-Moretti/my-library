@@ -30,7 +30,6 @@ resource "aws_security_group" "enable-ssh-sg" {
   }
 
 
-  # Outboud Rule for SG
   egress {
     from_port   = 0
     to_port     = 0

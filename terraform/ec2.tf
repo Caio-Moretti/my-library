@@ -8,7 +8,7 @@ resource "aws_instance" "my-library-ec2" {
   monitoring                  = true
 
   tags = {
-    Name = "My Library EC2 Instance from Terraform"
+    Name = "My Library EC2 Instance from Terraform (Apresentação)"
   }
 
   provisioner "remote-exec" {
@@ -21,7 +21,6 @@ resource "aws_instance" "my-library-ec2" {
     }
 
     inline = [
-      "echo hello world",
       "sudo apt update",
       "sudo apt install -y docker.io",
       "sudo usermod -aG docker ubuntu && sudo chmod 666 /var/run/docker.sock",
