@@ -3,7 +3,7 @@ resource "aws_vpc" "my-library-vpc" {
   instance_tenancy = "default"
 
   tags = {
-    Name = "My Library VPC"
+    Name = "My Library VPC - Terraform"
   }
 }
 
